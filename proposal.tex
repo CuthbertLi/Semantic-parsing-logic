@@ -1,0 +1,81 @@
+\documentclass[5pt]{article}
+\usepackage[pdftex]{graphicx, color}
+\usepackage{listings, proof}
+\usepackage{tikz}
+\usetikzlibrary{automata, positioning}
+\usepackage{geometry, amsmath}
+
+\newcommand{\infertext}[2]{\infer{{\textrm{#1}}}{#2}}
+
+\begin{document}
+Semantic Parsing Using Reinforcement Learning and Markov Logic
+
+Probabilistic Grammars (Slide 17.15)
+
+\section{Introduction} 
+	Semantic parsing is the task of converting a natural language statement to a logical form: a machine-understandable representation of its meaning. 
+
+	Formalization means representing natural languages in formal languages. In essence, the task of formalization is also a translation task. That is, translating a statement in a natural language into a formal language. 
+
+	\subsection{Examples}
+		First Example: 
+
+		Input: For any set $X$ of nonempty sets, there exists a choice function $f$ defined on $X$. 
+
+		Output: $\forall X (\emptyset \not\in X \Rightarrow \exists f: X \rightarrow \cup{X} \forall A \in X (f(A) \in A)) $
+
+		Second Example: 
+
+		Input: The rule for equality is that any types may be freely compared except Int, String and Bool, which may only be compared with objects of the same type. 
+
+		Output: 
+
+		\[
+			\infertext{$e_1$ = $e_2$: Bool }{
+				\begin{aligned}
+				& \textrm{$O, M, C \vdash e_1: T_1$ }\\
+				& \textrm{$O, M, C \vdash e_2: T_2$ }\\
+				& \textrm{$T_1 \in$ \{Int, String, Bool\} $\vee$ $T_2 \in$ \{Int, String, Bool\} $\Rightarrow T_1 = T_2 $}
+				\end{aligned}
+			}
+		\]
+
+	\subsection{Motivating Applications}
+		verification of softwares and computer security
+		verification of programming languages
+		checking correctness of mathematical proofs
+
+\section{Related Works}
+	Shi, Mihalcea (2004): an algorithm for open text shallow semantic parsing using a frame dataset (FrameNet) and a semantic network (WordNet)
+
+	Poon, Domingos (2009): unsupervised semantic parsing
+
+	Quirk, Mooney, Galley (2015): loosely synchronous systems perform best when learning semantic parsers for If-This-Then-That recipes
+
+	Beltagy, Quirk (2016): improved semantic parsers for If-Then statements \textbf{(this technique is generic)}
+
+	Guu, Pasupat, Liu, Liang (2017): learn a semantic parser using reinforcement learning and Maximum Marginal Likelihood
+
+\section{Methodology (we may include some contents from slides)}
+	Formal definition: Define context-free grammar or context-sensitive grammar for natural languages
+	Reinforcement Learning (Model-based learning): Learn empirical MDP model for semantic parsing
+	Unsupervised Machine Learning
+	Supervised Machine Learning
+
+\section{Input Models} 
+	Chomsky Hierarchy: 
+	https://en.wikipedia.org/wiki/Chomsky_hierarchy#The_hierarchy (Table)
+	Probabilistic Grammars (Slide 17.15)
+
+\section{Output Models}
+	Markov Logic: more expressive, but more complicated (slide 11)
+	First-order Logic: less expressive (slide 06)
+
+\section{Extensions}
+	We may use our result for tasks of style transfer 
+
+	style transfer: transforming a sentence to alter a specific attribute (e.g., sentiment) while preserving its attribute-independent content. 
+
+	ex: changing "screen is just the right size" to "screen is too small"
+
+\end{document}

@@ -1,0 +1,11 @@
+https://www.aclweb.org/mirror/emnlp2016/accepted-papers.html#long
+
+http://aclweb.org/anthology/D/D17/D17-1127.pdf
+http://aclweb.org/anthology/P14-1133
+https://arxiv.org/pdf/1804.08338.pdf
+https://nlp.stanford.edu/pubs/hamilton2016cultural.pdf
+http://yoavartzi.com/pub/alz-emnlp.2015.pdf
+https://arxiv.org/pdf/1609.09315.pdf
+http://ai2-website.s3.amazonaws.com/publications/emnlp-sentiential-semantic-parsing.pdf
+https://www.cs.cmu.edu/~ark/EMNLP-2015/proceedings/EMNLP/pdf/EMNLP135.pdf
+http://www.aclweb.org/anthology/P/P17/P17-1195.pdf

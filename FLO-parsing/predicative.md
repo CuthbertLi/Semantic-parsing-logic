@@ -1,10 +1,12 @@
-Carlson classes
+# Carlson classes
 
 The seminal work of Greg Carlson distinguishes between types of predicates.[15] Based on Carlson's work, predicates have been divided into the following sub-classes, which roughly pertain to how a predicate relates to its subject.
-Stage-level predicates
+
+## Stage-level predicates
 
 A stage-level predicate is true of a temporal stage of its subject. For example, if John is "hungry", then he typically will eat some food. His state of being hungry therefore lasts a certain amount of time, and not his entire lifespan. Stage-level predicates can occur in a wide range of grammatical constructions and are probably the most versatile kind of predicate.
-Individual-level predicates
+
+## Individual-level predicates
 
 An individual-level predicate is true throughout the existence of an individual. For example, if John is "smart", this is a property that he has, regardless of which particular point in time we consider. Individual-level predicates are more restricted than stage-level ones. Individual-level predicates cannot occur in presentational "there" sentences (a star in front of a sentence indicates that it is odd or ill-formed):
 
@@ -21,7 +23,7 @@ When an individual-level predicate occurs in past tense, it gives rise to what i
         John was available. - Stage-level predicate does NOT evoke the lifetime effect.
         John was altruistic. - Individual-level predicate does evoke the lifetime effect.
 
-Kind-level predicates
+## Kind-level predicates
 
 A kind-level predicate is true of a kind of thing, but cannot be applied to individual members of the kind. An example of this is the predicate are widespread. One cannot meaningfully say of a particular individual John that he is widespread. One may only say this of kinds, as in
 

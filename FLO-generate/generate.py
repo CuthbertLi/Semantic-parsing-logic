@@ -207,7 +207,7 @@ print("Every student at STU is smart")
 f = Quantifier("Universal", 
 	Predicate("At", [Variable("student"), Constant("STU")]), 
 	BinaryConnective("\\wedge", 
-		Predicate("Smart", [Variable("student")]), 
+		Negation(Predicate("NotSmart", [Variable("student")])), 
 		Predicate("Dilligent", [Variable("student")]))
 	)
 print("$$")

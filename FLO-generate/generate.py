@@ -17,7 +17,7 @@ class Expression:
 	def __init__(self, s):
 		self.text = s
 
-class Universal(Expression):
+class Universal(Expression): 
 	def __init__(self, s):
 		self.text = s
 		self.type = "Universal"
@@ -35,13 +35,17 @@ class Universal(Expression):
 # tree.generate()
 
 class Term(Expression): 
+	pass
+
+class Constant(Term): 
 	def __init__(self, s):
 		self.type = "Term"
 		self.text = s
 
-class Constant(Term): 
 	def generate(self):
 		print(self.text)
+		# print("(((((((((((((")
+		return
 
 class Variable(Term): 
 	def __init__(self, s):
@@ -51,6 +55,8 @@ class Variable(Term):
 
 	def addName(self):
 		t = len(variables_table)
+		if self.text in variables_table.keys():
+			return
 		name = "x_%d"%t
 		variables_table[self.text] = name
 		stack.append(name)
@@ -65,13 +71,13 @@ class Variable(Term):
 		return
 
 class Function(Term): 
-	def __init__(self, s, terms):
+	def __init__(self, name, terms):
 		self.terms = terms
 		self.type = "Term"
-		self.text = s
+		self.name = name
 
 	def generate(self):
-		outputSymbol(self.text)
+		outputSymbol(self.name)
 		print("(")
 		for term in self.terms[: -1]:
 			term.generate()
@@ -123,10 +129,16 @@ class Negation(Formula):
 		formula.generate()
 
 class Quantifier(Formula): 
-	def __init__(self, type1, f):
-		# self.text = s
+	# def __init__(self, type1, f):
+	# 	# self.text = s
+	# 	self.type = type1
+	# 	self.f1 = f
+	# 	self.f2 = None
+
+	def __init__(self, type1, f1, f2):
 		self.type = type1
-		self.f = f
+		self.f1 = f1
+		self.f2 = f2
 
 	def generate(self):
 		if self.type == "Universal":
@@ -135,8 +147,16 @@ class Quantifier(Formula):
 			print("\\exists")
 		variable = stack[-1]
 		print(variable)
-		f = self.f
-		f.generate()
+		f1 = self.f1
+		f2 = self.f2
+		f1.generate()
+		if f2 == None:
+			return
+		if self.type == "Universal":
+			print("\\Rightarrow")
+		else:
+			print("\\wee")
+		f2.generate()
 		return
 
 class BinaryConnective(Formula): 
@@ -153,8 +173,18 @@ class BinaryConnective(Formula):
 		return
 
 def outputSymbol(s):
-	print("\\text{" , s, "}")
+	print("\\text{")
+	print(s)
+	print("}")
 	return
 
-f = Quantifier("Universal", Predicate("Smart", [Variable("student")]))
+# f = Quantifier("Universal", Predicate("Smart", [
+# 	Function("At", [Variable("student"), Constant("STU")])
+# 	]))
+# Every student at STU is smart
+f = Quantifier("Universal", 
+	Predicate("At", [Variable("student"), Constant("STU")]), 
+	Predicate("Smart", [Variable("student")]), 
+	)
 f.generate()
+# f = BinaryConnective(Quantifier())

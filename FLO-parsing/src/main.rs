@@ -1,6 +1,6 @@
-#[derive(copy)]
+#[derive(Clone, Copy, Debug, PartialEq)]
 enum Subject {
-	Universal,
+	Universal, 
 	Existential, 
 	Variables(x)
 }
@@ -11,4 +11,10 @@ fn generate(s: Sentence) -> FOL {
 		Universal => {print_universal()}
 		Variables(x) => {}
 	}
+}
+
+#[derive(Clone, Copy, Debug, PartialEq)]
+enum Quantifier {
+	Universal, 
+	Existential, 
 }

@@ -1,17 +1,17 @@
 variables_table = {}
 stack = []
 
-class DependencyTree: 
-	def __init__(self, s):
-		self.root = Root("is")
-		self.subject = Expression("every student at STU")
-		self.predicative = Expression("smart")
+# class DependencyTree: 
+	# def __init__(self, s):
+	# 	self.root = Root("is")
+	# 	self.subject = Expression("every student at STU")
+	# 	self.predicative = Expression("smart")
 
-	def generate(self):
-		if self.subject.isUniversal():
-			self.subject.generateUniversal()
-			print("\\Rightarrow")
-			# self.
+	# def generate(self):
+	# 	if self.subject.isUniversal():
+	# 		self.subject.generateUniversal()
+	# 		print("\\Rightarrow")
+	# 		# self.
 
 class Expression: 
 	def __init__(self, s):
@@ -160,16 +160,19 @@ class Quantifier(Formula):
 		return
 
 class BinaryConnective(Formula): 
-	def __init__(self, s, type1, f1, f2):
-		self.text = s
+	def __init__(self, type1, f1, f2):
+		# self.text = s
 		self.type = type1
 		self.f1 = f1
 		self.f2 = f2
 
 	def generate(self):
+		f1, f2 = self.f1, self.f2
+		print("(")
 		f1.generate()
-		print(type)
+		print(self.type)
 		f2.generate()
+		print(")")
 		return
 
 def outputSymbol(s):
@@ -178,13 +181,37 @@ def outputSymbol(s):
 	print("}")
 	return
 
+def outputHead():
+	print("\\documentclass{article}")
+	print("\\usepackage[utf8]{inputenc}")
+	print("\\usepackage{listings}")
+	print("\\usepackage{xcolor}")
+	print("\\usepackage{graphicx, fancyhdr, amsmath, amssymb, amsthm, subfig}")
+	print("\\usepackage{indentfirst}")
+	print("\\usepackage{pdfpages}")
+	print("\\usepackage{dirtree}")
+	print("\\usepackage{lastpage, hyperref}")
+	print("\\begin{document}")
+	return
+
+def outputEnd():
+	print("\\end{document}")
+	return
+
+outputHead()
 # f = Quantifier("Universal", Predicate("Smart", [
 # 	Function("At", [Variable("student"), Constant("STU")])
 # 	]))
 # Every student at STU is smart
+print("Every student at STU is smart")
 f = Quantifier("Universal", 
 	Predicate("At", [Variable("student"), Constant("STU")]), 
-	Predicate("Smart", [Variable("student")]), 
+	BinaryConnective("\\wedge", 
+		Predicate("Smart", [Variable("student")]), 
+		Predicate("Dilligent", [Variable("student")]))
 	)
+print("$$")
 f.generate()
+print("$$")
+outputEnd()
 # f = BinaryConnective(Quantifier())

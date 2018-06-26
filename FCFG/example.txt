@@ -1,0 +1,20 @@
+|.Alic. is .happ.|
+|[----]    .    .| [0:1] 'Alice'
+|.    [----]    .| [1:2] 'is'
+|.    .    [----]| [2:3] 'happy'
+|[----]    .    .| [0:1] PropN[NUM='sg', SEM=<\P.P(Alice)>] -> 'Alice' *
+|[----]    .    .| [0:1] NP[NUM='sg', SEM=<\P.P(Alice)>] -> PropN[NUM='sg', SEM=<\P.P(Alice)>] *
+|[---->    .    .| [0:1] S[SEM=<?subj(?vp)>] -> NP[NUM=?n, SEM=?subj] * VP[NUM=?n, SEM=?vp] {?n: 'sg', ?subj: <LambdaExpression \P.P(Alice)>}
+|.    [----]    .| [1:2] Aux[NUM='sg', SEM=<\P x.P(x)>, tns='pres'] -> 'is' *
+|.    [---->    .| [1:2] AuxP[NUM=?n, SEM=<?neg(?aux)>] -> Aux[NUM=?n, SEM=?aux] * Neg[SEM=?neg] {?aux: <LambdaExpression \P x.P(x)>, ?n: 'sg'}
+|.    [----]    .| [1:2] AuxP[NUM='sg', SEM=<\P x.P(x)>] -> Aux[NUM='sg', SEM=<\P x.P(x)>] *
+|.    [---->    .| [1:2] VP[NUM=?n, SEM=<?v(?prd)>] -> AuxP[NUM=?n, SEM=?v] * Pred[SEM=?prd] {?n: 'sg', ?v: <LambdaExpression \P x.P(x)>}
+|.    [---->    .| [1:2] VP[NUM=?n, SEM=<?v(?vp)>, +neg] -> AuxP[NUM=?n, SEM=?v] * VP[NUM='pl', SEM=?vp] {?n: 'sg', ?v: <LambdaExpression \P x.P(x)>}
+|.    .    [----]| [2:3] Adj[SEM=<\x.happy(x)>] -> 'happy' *
+|.    .    [----]| [2:3] Pred[SEM=<\x.happy(x)>] -> Adj[SEM=<\x.happy(x)>] *
+|.    [---------]| [1:3] VP[NUM='sg', SEM=<\x.happy(x)>] -> AuxP[NUM='sg', SEM=<\P x.P(x)>] Pred[SEM=<\x.happy(x)>] *
+|.    [--------->| [1:3] VP[NUM=?n, SEM=<?pp(?vp)>] -> VP[NUM=?n, SEM=?vp] * PP[-PRED, SEM=?pp] {?n: 'sg', ?vp: <LambdaExpression \x.happy(x)>}
+|[==============]| [0:3] S[SEM=<happy(Alice)>] -> NP[NUM='sg', SEM=<\P.P(Alice)>] VP[NUM='sg', SEM=<\x.happy(x)>] *
+
+Result:
+happy(Alice)

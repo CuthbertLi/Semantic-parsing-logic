@@ -1,0 +1,51 @@
+|.E.s.a.S.i.s.|
+|[-] . . . . .| [0:1] 'Every'
+|. [-] . . . .| [1:2] 'student'
+|. . [-] . . .| [2:3] 'at'
+|. . . [-] . .| [3:4] 'STU'
+|. . . . [-] .| [4:5] 'is'
+|. . . . . [-]| [5:6] 'smart'
+|[-] . . . . .| [0:1] Det[NUM='sg', SEM=<\P Q.all x.(P(x) -> Q(x))>] -> 'Every' *
+|[-> . . . . .| [0:1] NP[NUM=?n, SEM=<?det(?nom)>] -> Det[NUM=?n, SEM=?det] * Nom[NUM=?n, SEM=?nom] {?det: <LambdaExpression \P Q.all x.(P(x) -> Q(x))>, ?n: 'sg'}
+|[-> . . . . .| [0:1] PredN[NUM=?n, SEM=?nom] -> Det[NUM=?n] * Nom[NUM=?n, SEM=?nom] {?n: 'sg'}
+|. [-] . . . .| [1:2] N[NUM='sg', SEM=<\x.student(x)>] -> 'student' *
+|. [-] . . . .| [1:2] Nom[NUM='sg', SEM=<\x.student(x)>] -> N[NUM='sg', SEM=<\x.student(x)>] *
+|. [-> . . . .| [1:2] Nom[NUM=?n, SEM=<?pp(?nom)>] -> N[NUM=?n, SEM=?nom] * PP[SEM=?pp] {?n: 'sg', ?nom: <LambdaExpression \x.student(x)>}
+|[---] . . . .| [0:2] NP[NUM='sg', SEM=<\Q.all x.(student(x) -> Q(x))>] -> Det[NUM='sg', SEM=<\P Q.all x.(P(x) -> Q(x))>] Nom[NUM='sg', SEM=<\x.student(x)>] *
+|[---] . . . .| [0:2] PredN[NUM='sg', SEM=<\x.student(x)>] -> Det[NUM='sg'] Nom[NUM='sg', SEM=<\x.student(x)>] *
+|[---] . . . .| [0:2] Pred[SEM=<\x.student(x)>] -> PredN[SEM=<\x.student(x)>] *
+|[---> . . . .| [0:2] S[SEM=<?subj(?vp)>] -> NP[NUM=?n, SEM=?subj] * VP[NUM=?n, SEM=?vp] {?n: 'sg', ?subj: <LambdaExpression \Q.all x.(student(x) -> Q(x))>}
+|. . [-] . . .| [2:3] P[-PRED, SEM=<\X P x.X(\y.(P(x) & at(x,y)))>] -> 'at' *
+|. . [-] . . .| [2:3] P[+PRED, SEM=<\X x.X(\y.at(x,y))>] -> 'at' *
+|. . [-> . . .| [2:3] PP[LOC=?l, PRED=?prd, SEM=<?p(?np)>] -> P[LOC=?l, PRED=?prd, SEM=?p] * NP[LOC=?l, SEM=?np] {?p: <LambdaExpression \X x.X(\y.at(x,y))>, ?prd: True}
+|. . [-> . . .| [2:3] PP[LOC=?l, PRED=?prd, SEM=<?p(?np)>] -> P[LOC=?l, PRED=?prd, SEM=?p] * NP[LOC=?l, SEM=?np] {?p: <LambdaExpression \X P x.X(\y.(P(x) & at(x,y)))>, ?prd: False}
+|. . . [-] . .| [3:4] NP[NUM='sg', SEM=<\Q.exists x.(STU(x) & Q(x))>] -> 'STU' *
+|. . . [-> . .| [3:4] S[SEM=<?subj(?vp)>] -> NP[NUM=?n, SEM=?subj] * VP[NUM=?n, SEM=?vp] {?n: 'sg', ?subj: <LambdaExpression \Q.exists x.(STU(x) & Q(x))>}
+|. . [---] . .| [2:4] PP[LOC=?l, +PRED, SEM=<\x.exists z1.(STU(z1) & at(x,z1))>] -> P[LOC=?l, +PRED, SEM=<\X x.X(\y.at(x,y))>] NP[LOC=?l, SEM=<\Q.exists x.(STU(x) & Q(x))>] *
+|. . [---] . .| [2:4] PP[LOC=?l, -PRED, SEM=<\P x.exists z2.(STU(z2) & P(x) & at(x,z2))>] -> P[LOC=?l, -PRED, SEM=<\X P x.X(\y.(P(x) & at(x,y)))>] NP[LOC=?l, SEM=<\Q.exists x.(STU(x) & Q(x))>] *
+|. [-----] . .| [1:4] Nom[NUM='sg', SEM=<\x.exists z2.(STU(z2) & student(x) & at(x,z2))>] -> N[NUM='sg', SEM=<\x.student(x)>] PP[SEM=<\P x.exists z2.(STU(z2) & P(x) & at(x,z2))>] *
+|[-------] . .| [0:4] NP[NUM='sg', SEM=<\Q.all x.(exists z2.(STU(z2) & student(x) & at(x,z2)) -> Q(x))>] -> Det[NUM='sg', SEM=<\P Q.all x.(P(x) -> Q(x))>] Nom[NUM='sg', SEM=<\x.exists z2.(STU(z2) & student(x) & at(x,z2))>] *
+|[-------] . .| [0:4] PredN[NUM='sg', SEM=<\x.exists z2.(STU(z2) & student(x) & at(x,z2))>] -> Det[NUM='sg'] Nom[NUM='sg', SEM=<\x.exists z2.(STU(z2) & student(x) & at(x,z2))>] *
+|[-------] . .| [0:4] Pred[SEM=<\x.exists z2.(STU(z2) & student(x) & at(x,z2))>] -> PredN[SEM=<\x.exists z2.(STU(z2) & student(x) & at(x,z2))>] *
+|[-------> . .| [0:4] S[SEM=<?subj(?vp)>] -> NP[NUM=?n, SEM=?subj] * VP[NUM=?n, SEM=?vp] {?n: 'sg', ?subj: <LambdaExpression \Q.all x.(exists z2.(STU(z2) & student(x) & at(x,z2)) -> Q(x))>}
+|. . [---] . .| [2:4] Pred[SEM=<\x.exists z1.(STU(z1) & at(x,z1))>] -> PP[+PRED, SEM=<\x.exists z1.(STU(z1) & at(x,z1))>] *
+|. [-----] . .| [1:4] Nom[NUM='sg', SEM=<exists z1.(STU(z1) & at(\x.student(x),z1))>] -> N[NUM='sg', SEM=<\x.student(x)>] PP[SEM=<\x.exists z1.(STU(z1) & at(x,z1))>] *
+|[-------] . .| [0:4] NP[NUM='sg', SEM=<\Q.all x.(exists z1.(STU(z1) & at(\x.student(x),z1))(x) -> Q(x))>] -> Det[NUM='sg', SEM=<\P Q.all x.(P(x) -> Q(x))>] Nom[NUM='sg', SEM=<exists z1.(STU(z1) & at(\x.student(x),z1))>] *
+|[-------] . .| [0:4] PredN[NUM='sg', SEM=<exists z1.(STU(z1) & at(\x.student(x),z1))>] -> Det[NUM='sg'] Nom[NUM='sg', SEM=<exists z1.(STU(z1) & at(\x.student(x),z1))>] *
+|[-------] . .| [0:4] Pred[SEM=<exists z1.(STU(z1) & at(\x.student(x),z1))>] -> PredN[SEM=<exists z1.(STU(z1) & at(\x.student(x),z1))>] *
+|[-------> . .| [0:4] S[SEM=<?subj(?vp)>] -> NP[NUM=?n, SEM=?subj] * VP[NUM=?n, SEM=?vp] {?n: 'sg', ?subj: <LambdaExpression \Q.all x.(exists z1.(STU(z1) & at(\x.student(x),z1))(x) -> Q(x))>}
+|. . . . [-] .| [4:5] Aux[NUM='sg', SEM=<\P x.P(x)>, tns='pres'] -> 'is' *
+|. . . . [-> .| [4:5] AuxP[NUM=?n, SEM=<?neg(?aux)>] -> Aux[NUM=?n, SEM=?aux] * Neg[SEM=?neg] {?aux: <LambdaExpression \P x.P(x)>, ?n: 'sg'}
+|. . . . [-] .| [4:5] AuxP[NUM='sg', SEM=<\P x.P(x)>] -> Aux[NUM='sg', SEM=<\P x.P(x)>] *
+|. . . . [-> .| [4:5] VP[NUM=?n, SEM=<?v(?prd)>] -> AuxP[NUM=?n, SEM=?v] * Pred[SEM=?prd] {?n: 'sg', ?v: <LambdaExpression \P x.P(x)>}
+|. . . . [-> .| [4:5] VP[NUM=?n, SEM=<?v(?vp)>, +neg] -> AuxP[NUM=?n, SEM=?v] * VP[NUM='pl', SEM=?vp] {?n: 'sg', ?v: <LambdaExpression \P x.P(x)>}
+|. . . . . [-]| [5:6] Adj[SEM=<\x.smart(x)>] -> 'smart' *
+|. . . . . [-]| [5:6] Pred[SEM=<\x.smart(x)>] -> Adj[SEM=<\x.smart(x)>] *
+|. . . . [---]| [4:6] VP[NUM='sg', SEM=<\x.smart(x)>] -> AuxP[NUM='sg', SEM=<\P x.P(x)>] Pred[SEM=<\x.smart(x)>] *
+|. . . . [--->| [4:6] VP[NUM=?n, SEM=<?pp(?vp)>] -> VP[NUM=?n, SEM=?vp] * PP[-PRED, SEM=?pp] {?n: 'sg', ?vp: <LambdaExpression \x.smart(x)>}
+|. . . [-----]| [3:6] S[SEM=<exists x.(STU(x) & smart(x))>] -> NP[NUM='sg', SEM=<\Q.exists x.(STU(x) & Q(x))>] VP[NUM='sg', SEM=<\x.smart(x)>] *
+|[===========]| [0:6] S[SEM=<all x.(exists z2.(STU(z2) & student(x) & at(x,z2)) -> smart(x))>] -> NP[NUM='sg', SEM=<\Q.all x.(exists z2.(STU(z2) & student(x) & at(x,z2)) -> Q(x))>] VP[NUM='sg', SEM=<\x.smart(x)>] *
+|[===========]| [0:6] S[SEM=<all x.(exists z1.(STU(z1) & at(\x.student(x),z1))(x) -> smart(x))>] -> NP[NUM='sg', SEM=<\Q.all x.(exists z1.(STU(z1) & at(\x.student(x),z1))(x) -> Q(x))>] VP[NUM='sg', SEM=<\x.smart(x)>] *
+
+Result:
+all x.(exists z2.(STU(z2) & student(x) & at(x,z2)) -> smart(x))

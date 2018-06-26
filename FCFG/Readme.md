@@ -39,3 +39,7 @@
     `N[NUM=pl,SEM=<\x.student(x)>] -> 'students'`
 
 - 'and' is not suported yet due to the complicated rules
+
+- Use `python3 generate.py > output.tex` to generate a latex output.
+
+- Use `python3 convert.py "[sentence]" -v to see the parsing prosedure.

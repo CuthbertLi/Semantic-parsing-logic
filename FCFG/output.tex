@@ -1,0 +1,113 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{graphicx, fancyhdr, amsmath, amssymb, amsthm, subfig}
+\usepackage{indentfirst}
+\usepackage{pdfpages}
+\usepackage{dirtree}
+\usepackage{lastpage, hyperref}
+\begin{document}
+%happy(Alice)
+Alice is happy
+$$
+\text{ happy } ( Alice ) 
+$$
+\newline
+%exists z1.(kitchen(z1) & in(Bob,z1))
+Bob is in the kitchen
+$$
+\exists z_1 ( \text{ kitchen } ( z_1 ) \wedge \text{ in } ( Bob , z_1 ) ) 
+$$
+\newline
+%exists z1.(garden(z1) & in(Charlie,z1))
+Charlie is in a garden
+$$
+\exists z_1 ( \text{ garden } ( z_1 ) \wedge \text{ in } ( Charlie , z_1 ) ) 
+$$
+\newline
+%all x.(exists z2.(STU(z2) & student(x) & at(x,z2)) -> smart(x))
+Every student at STU is smart
+$$
+\forall x ( \exists z_2 ( \text{ STU } ( z_2 ) \wedge \text{ student } ( x ) \wedge \text{ at } ( x , z_2 ) ) \Rightarrow \text{ smart } ( x ) ) 
+$$
+\newline
+%exists x.(exists z2.(garden(z2) & boy(x) & in(x,z2)) & sad(x))
+Some boys in the garden are sad
+$$
+\exists x ( \exists z_2 ( \text{ garden } ( z_2 ) \wedge \text{ boy } ( x ) \wedge \text{ in } ( x , z_2 ) ) \wedge \text{ sad } ( x ) ) 
+$$
+\newline
+%all x.(girl(x) -> beautiful(x))
+All girls are beautiful
+$$
+\forall x ( \text{ girl } ( x ) \Rightarrow \text{ beautiful } ( x ) ) 
+$$
+\newline
+%-exists x.(student(x) & married(x))
+No student is married
+$$
+\neg \exists x ( \text{ student } ( x ) \wedge \text{ married } ( x ) ) 
+$$
+\newline
+%-happy(Alice)
+Alice is not happy
+$$
+\neg \text{ happy } ( Alice ) 
+$$
+\newline
+%all x.(person(x) -> -sad(x))
+All persons are not sad
+$$
+\forall x ( \text{ person } ( x ) \Rightarrow \neg \text{ sad } ( x ) ) 
+$$
+\newline
+%exists x.(dog(x) & bark(x))
+A dog barks
+$$
+\exists x ( \text{ dog } ( x ) \wedge \text{ bark } ( x ) ) 
+$$
+\newline
+%all x.(dog(x) -> bark(x))
+All dogs bark
+$$
+\forall x ( \text{ dog } ( x ) \Rightarrow \text{ bark } ( x ) ) 
+$$
+\newline
+%exists x.(exists z2.(garden(z2) & dog(x) & in(x,z2)) & bark(x))
+The dog in the garden barks
+$$
+\exists x ( \exists z_2 ( \text{ garden } ( z_2 ) \wedge \text{ dog } ( x ) \wedge \text{ in } ( x , z_2 ) ) \wedge \text{ bark } ( x ) ) 
+$$
+\newline
+%see(Alice,Bob)
+Alice sees Bob
+$$
+\text{ see } ( Alice , Bob ) 
+$$
+\newline
+%know(Alice,Bob)
+Alice does know Bob
+$$
+\text{ know } ( Alice , Bob ) 
+$$
+\newline
+%exists z2.(garden(z2) & chase(Alice,Bob) & in(Alice,z2))
+Alice chases Bob in the garden
+$$
+\exists z_2 ( \text{ garden } ( z_2 ) \wedge \text{ chase } ( Alice , Bob ) \wedge \text{ in } ( Alice , z_2 ) ) 
+$$
+\newline
+%all x.(exists z2.(Shanghai(z2) & person(x) & in(x,z2)) -> exists z3.(STU(z3) & know(x,z3)))
+All persons in Shanghai know STU
+$$
+\forall x ( \exists z_2 ( \text{ Shanghai } ( z_2 ) \wedge \text{ person } ( x ) \wedge \text{ in } ( x , z_2 ) ) \Rightarrow \exists z_3 ( \text{ STU } ( z_3 ) \wedge \text{ know } ( x , z_3 ) ) ) 
+$$
+\newline
+%(exists z1.(garden(z1) & in(Alice,z1)) & with(Alice,Bob))
+Alice is in the garden with Bob
+$$
+( \exists z_1 ( \text{ garden } ( z_1 ) \wedge \text{ in } ( Alice , z_1 ) ) \wedge \text{ with } ( Alice , Bob ) ) 
+$$
+\newline
+\end{document}

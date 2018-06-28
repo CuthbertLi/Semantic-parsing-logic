@@ -45,7 +45,7 @@
 		Semantic parsing can also help to prove mathematical theorems as well as to check their proofs automatically. Output of a semantic parser is in logical forms, so it can be accepted by computers. Computers can then finish later tasks by inference. 
 	}
 
-	\subsection{Related Works and Our Contributions}{
+	\subsection{Our Contributions}{
 		Thanks to parsing trees, our model is highly generic. We can easily reuse it for a different natural language by simply defining new rules. 
 
 		We succeed to build a binding and scoping structures based on parsing trees. 
@@ -66,32 +66,30 @@
 	}
 
 	\subsection{Recursive Definition of FOL}{
-		Terms
+		% Terms
 
-		The set of terms is inductively defined by the following rules:
+		% The set of terms is inductively defined by the following rules:
 
-		Variables. Any variable is a term.
-		Functions. Any expression f(t1,...,tn) of n arguments (where each argument ti is a term and f is a function symbol of valence n) is a term. In particular, symbols denoting individual constants are nullary function symbols, and are thus terms.
+		% Variables. Any variable is a term.
+		% Functions. Any expression f(t1,...,tn) of n arguments (where each argument ti is a term and f is a function symbol of valence n) is a term. In particular, symbols denoting individual constants are nullary function symbols, and are thus terms.
 
-		Only expressions which can be obtained by finitely many applications of rules 1 and 2 are terms. For example, no expression involving a predicate symbol is a term.
-		Formulas
+		% Only expressions which can be obtained by finitely many applications of rules 1 and 2 are terms. For example, no expression involving a predicate symbol is a term.
+		% Formulas
 
-		The set of formulas (also called well-formed formulas[9] or WFFs) is inductively defined by the following rules:
+		% The set of formulas (also called well-formed formulas[9] or WFFs) is inductively defined by the following rules:
 
-		Predicate symbols. If P is an n-ary predicate symbol and t1, ..., tn are terms then P(t1,...,tn) is a formula.
-		Equality. If the equality symbol is considered part of logic, and t1 and t2 are terms, then t1 = t2 is a formula.
-		Negation. If φ is a formula, then ¬ {\displaystyle \lnot } \lnot φ is a formula.
-		Binary connectives. If φ and ψ are formulas, then (φ → {\displaystyle \rightarrow } \rightarrow ψ) is a formula. Similar rules apply to other binary logical connectives.
-		Quantifiers. If φ {\displaystyle \varphi } \varphi is a formula and x is a variable, then ∀ x φ {\displaystyle \forall x\varphi } \forall x\varphi (for all x, φ {\displaystyle \varphi } \varphi holds) and ∃ x φ {\displaystyle \exists x\varphi } \exists x\varphi (there exists x such that φ {\displaystyle \varphi } \varphi ) are formulas.
+		% Predicate symbols. If P is an n-ary predicate symbol and t1, ..., tn are terms then P(t1,...,tn) is a formula.
+		% Equality. If the equality symbol is considered part of logic, and t1 and t2 are terms, then t1 = t2 is a formula.
+		% Negation. If φ is a formula, then ¬ {\displaystyle \lnot } \lnot φ is a formula.
+		% Binary connectives. If φ and ψ are formulas, then (φ → {\displaystyle \rightarrow } \rightarrow ψ) is a formula. Similar rules apply to other binary logical connectives.
+		% Quantifiers. If φ {\displaystyle \varphi } \varphi is a formula and x is a variable, then ∀ x φ {\displaystyle \forall x\varphi } \forall x\varphi (for all x, φ {\displaystyle \varphi } \varphi holds) and ∃ x φ {\displaystyle \exists x\varphi } \exists x\varphi (there exists x such that φ {\displaystyle \varphi } \varphi ) are formulas.
 
-		Only expressions which can be obtained by finitely many applications of rules 1–5 are formulas. The formulas obtained from the first two rules are said to be atomic formulas.
+		% Only expressions which can be obtained by finitely many applications of rules 1–5 are formulas. The formulas obtained from the first two rules are said to be atomic formulas.
 	}
 }
 
-\section{Modules of Semantic Parsing}{
-	\subsection{Lexical Analysis and Syntax Analysis}{}
-
-	\subsection{Parsing Tree Traversal}{}
+\section{Parsing Tree Traversal}{
+	\subsection{Binding and Scoping}{}
 }
 
 \section{Generation of FOL}{}

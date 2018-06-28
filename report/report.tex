@@ -26,7 +26,7 @@
 	\newpage
 	\maketitle
 
-	\textbf{Abstract}-{In this paper, we present a generic model for semantic parsing. }
+	\textbf{Abstract} - {In this paper, we present a generic model for semantic parsing. }
 
 	\vspace{5pt}
 	\textbf{\emph{Keywords:}} {}
@@ -45,28 +45,50 @@
 		Semantic parsing can also help to prove mathematical theorems as well as to check their proofs automatically. Output of a semantic parser is in logical forms, so it can be accepted by computers. Computers can then finish later tasks by inference. 
 	}
 
-	\subsection{}{}
-
 	\subsection{Related Works and Our Contributions}{
 		Thanks to parsing trees, our model is highly generic. We can easily reuse it for a different natural language by simply defining new rules. 
 
-		We succeed to implement a binding and scoping structures based on parsing trees. 
+		We succeed to build a binding and scoping structures based on parsing trees. 
 	}
 }
 
 \section{Methods}{
 	\subsection{Grammars and Parsing Tree}{
-		According to Chomsky hierarchy, formal grammars can be classified as regular grammar, context-free grammar, context-sensitive grammar and recursive enumerable grammar. 
+		\cite{su}
 
-		Context-sensitive grammar is computationally intractable and recursive enumerable grammar is even undecideable, although more expressive and more powerful. Besides, regular grammar is obviously too restrictive. Therefore, we can choose either context-free grammar or one of its subset, dependency grammar. 
+		According to Chomsky hierarchy, formal grammars can be classified as regular grammar, context-free grammar (CFG), context-sensitive grammar and recursive enumerable grammar. 
 
-		We first consider dependency grammar, since dependency trees seem to preserve enough information we need. 
+		Context-sensitive grammar is computationally intractable and recursive enumerable grammar is even undecideable, although they more expressive and more powerful. Besides, regular grammar is obviously too restrictive. Therefore, we can choose either context-free grammar or one of its subsets, dependency grammar. 
+
+		We have first considered dependency grammar, since dependency trees seem to preserve enough information we need. Meanwhile, dependency trees are much smaller than CFG parsing trees. However, we have found it insufficient. Dependency parsing trees cannot provide groups of words within a sentence, but this information is indispensible for first-order logic. For instance, 
+
+		Therefore, we choose CFG parsing trees as our input. We can get CFG parsing trees from texts in natural languages, and then generate FOL expressions from the trees. 
 	}
 
-	\subsection{Recursive Definition of FOL}{}
+	\subsection{Recursive Definition of FOL}{
+		Terms
+
+		The set of terms is inductively defined by the following rules:
+
+		Variables. Any variable is a term.
+		Functions. Any expression f(t1,...,tn) of n arguments (where each argument ti is a term and f is a function symbol of valence n) is a term. In particular, symbols denoting individual constants are nullary function symbols, and are thus terms.
+
+		Only expressions which can be obtained by finitely many applications of rules 1 and 2 are terms. For example, no expression involving a predicate symbol is a term.
+		Formulas
+
+		The set of formulas (also called well-formed formulas[9] or WFFs) is inductively defined by the following rules:
+
+		Predicate symbols. If P is an n-ary predicate symbol and t1, ..., tn are terms then P(t1,...,tn) is a formula.
+		Equality. If the equality symbol is considered part of logic, and t1 and t2 are terms, then t1 = t2 is a formula.
+		Negation. If φ is a formula, then ¬ {\displaystyle \lnot } \lnot φ is a formula.
+		Binary connectives. If φ and ψ are formulas, then (φ → {\displaystyle \rightarrow } \rightarrow ψ) is a formula. Similar rules apply to other binary logical connectives.
+		Quantifiers. If φ {\displaystyle \varphi } \varphi is a formula and x is a variable, then ∀ x φ {\displaystyle \forall x\varphi } \forall x\varphi (for all x, φ {\displaystyle \varphi } \varphi holds) and ∃ x φ {\displaystyle \exists x\varphi } \exists x\varphi (there exists x such that φ {\displaystyle \varphi } \varphi ) are formulas.
+
+		Only expressions which can be obtained by finitely many applications of rules 1–5 are formulas. The formulas obtained from the first two rules are said to be atomic formulas.
+	}
 }
 
-\section{Two-step Semantic Parsing}{
+\section{Modules of Semantic Parsing}{
 	\subsection{Lexical Analysis and Syntax Analysis}{}
 
 	\subsection{Parsing Tree Traversal}{}

@@ -12,7 +12,7 @@
 % \pagestyle{fancy}
 % \fancyhf{}
 % \rhead{Page \thepage\ of \pageref{LastPage}}
-\title{Semantic Parsing and Text Generation for First-order Logic}
+\title{Semantic Parsing for First-order Logic}
 \author{
 	Li Dinghong\\
 	SIST, Shanghaitech University\\
@@ -35,52 +35,42 @@
 }
 
 \section{Introduction}{
-	Goal of semantic parsing is to formalize natural languages. That is, translating texts in natural languages into formal languges, like first-order logic (FOL) or higher-order logic, while text generation goes in the other way. A text generator aims to generate texts in natural languages based on given information, and it can be written in formal logic. 
+	Goal of semantic parsing is to formalize natural languages. That is, translating texts in natural languages into formal languges, like first-order logic (FOL) or higher-order logic. 
 
 	\subsection{Motivating Applications}{
 		\cite{su} 
 	}
+	
+	\subsection{Related Works and Our Contributions}{
+		In this work, we choose to use English as input of our semantic parser, and FOL as output. 
 
-	% \subsection{Related Works}{}
-
-	\subsection{Our Contributions}{
-		In this work, we choose to use English as input of our semantic parser, and FOL as output. For text generator, we use FOL as our input, and both English and Chinese as our output. 
+		% For text generator, we use FOL as our input, and both English and Chinese as our output. 
 
 		% Our model is highly generic. It can be easily extended to other natural languages, since it takes parsing tree as input, instead of original texts. 
 
-		Thanks to introduction of parsing trees, both models become much more generic. It is because it it takes parsing tree as input, instead of directly using original texts. Our models can easily be extended to other natural languages like French by defining lexicon and grammar for it. 
+		Thanks to parsing trees, our model has become much more generic. We take parsing tree as input, instead of directly using original texts. Thus, our model can easily be extended to other natural languages like French by defining new lexicon and grammar. 
 
-		As for semantic parsing, we succeed to include predicate logic in our output. It improves expressiveness of our models. 
+		We succeed to include predicate logic in our output. It improves expressiveness of our models. 
 
-		As for text generation, our models 
+		% As for text generation, our models 
 	}
 }
 
-\section{Semantic Parsing and Text Generation}{}
+\section{Methods}{
+	\subsection{Recursive Definition of FOL}{}
 
-\section{Profile of the Benchmark Data}{}
-
-\section{Basic Models}{
-	\subsection{First-order Logic}{}
-
-	\subsection{CFG and Dependency Grammar}{}
+	\subsection{Context-free Grammar and Dependency Grammar}{}
 }
 
 \section{Two-step Semantic Parsing}{
 	\subsection{Lexical Analysis and Syntax Analysis}{}
 
 	\subsection{Parsing Tree Traversal}{}
-
-	\subsection{Rules for FOL}{}
 }
 
-\section{Parsing Trees for Chinese and English}{}
+\section{Generation of FOL}{}
 
-\section{Text Generation using Parsing Trees}{}
-
-\section{Experiment Results and Sensitivity Analysis}{}
-
-\section{Future Works}{}
+\section{Results}{}
 
 \section{Conclusion}{}
 

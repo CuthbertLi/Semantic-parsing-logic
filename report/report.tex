@@ -35,21 +35,30 @@
 }
 
 \section{Introduction}{
-	\subsection{Background}{
-		Goal of semantic parsing is to formalize natural languages. That is, translating texts in natural languages into formal languges, like first-order logic (FOL) or higher-order logic. 
+	\subsection{Background and Motivating Applications}{
+		The Goal of semantic parsing is to formalize natural languages. That is, translating texts in natural languages into formal languges, like first-order logic (FOL) or higher-order logic. 
+
+		Semantic parsing can be applied in a wide range of fields both in computer science and outside computer science. Computer security of a software, for instance, cannot be confirmed until it is studied formally and mathematically. Empirical methods like fuzzing are not so reliable because they lack solid foundations. Thus, semantic parsing is necessary. 
+
+		Formal verification of programming languages also require to formalize user manuals or official guides, which are typically written in natural languages. Most of these tasks are done by hand now. This is tedious and erroneous. 
+
+		Semantic parsing can also help to prove mathematical theorems as well as to check their proofs automatically. Output of a semantic parser is in logical forms, so it can be accepted by computers. Computers can then finish later tasks by inference. 
 	}
 
-	\subsection{Motivating Applications}{
-		\cite{su} 
-	}
+	\subsection{Related Works}{}
 
-	\subsection{Our Contributions}{}
+	\subsection{Our Contributions}{
+		Thanks to parsing trees, our model is highly generic. We can easily reuse it for a different natural language by simply defining new rules. 
+
+		We succeed to implement a binding and scoping structures based on parsing trees. 
+	}
 }
 
 \section{Methods}{
-	\subsection{Recursive Definition of FOL}{}
+	\subsection{Parsing Tree}{
+	}
 
-	\subsection{Parsing Tree}{}
+	\subsection{Recursive Definition of FOL}{}
 }
 
 \section{Two-step Semantic Parsing}{

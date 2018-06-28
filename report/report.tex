@@ -45,9 +45,9 @@
 		Semantic parsing can also help to prove mathematical theorems as well as to check their proofs automatically. Output of a semantic parser is in logical forms, so it can be accepted by computers. Computers can then finish later tasks by inference. 
 	}
 
-	\subsection{Related Works}{}
+	\subsection{}{}
 
-	\subsection{Our Contributions}{
+	\subsection{Related Works and Our Contributions}{
 		Thanks to parsing trees, our model is highly generic. We can easily reuse it for a different natural language by simply defining new rules. 
 
 		We succeed to implement a binding and scoping structures based on parsing trees. 
@@ -55,7 +55,12 @@
 }
 
 \section{Methods}{
-	\subsection{Parsing Tree}{
+	\subsection{Grammars and Parsing Tree}{
+		According to Chomsky hierarchy, formal grammars can be classified as regular grammar, context-free grammar, context-sensitive grammar and recursive enumerable grammar. 
+
+		Context-sensitive grammar is computationally intractable and recursive enumerable grammar is even undecideable, although more expressive and more powerful. Besides, regular grammar is obviously too restrictive. Therefore, we can choose either context-free grammar or one of its subset, dependency grammar. 
+
+		We first consider dependency grammar, since dependency trees seem to preserve enough information we need. 
 	}
 
 	\subsection{Recursive Definition of FOL}{}

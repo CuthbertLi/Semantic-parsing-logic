@@ -134,9 +134,21 @@
 
 		Binding is not challenging for a single sentence. However, determining scope of variables is not even possible without the help of parsing trees. 
 
-		% Rule: A variable lives within the tree rooted by the closest non-trivial NP parent
+		% Rule: A variable lives within its own constituency within a sentence
 
-		Our rule is that a variable lives within the tree rooted by the closest non-trivial NP parent. 
+		Our scoping rule is that \textbf{a variable lives within its own constituency within a sentence}. 
+
+		Since CFG parsing trees present information about constituency in a sentence clearly, we can determine the scope of variables easily using CFG parsing trees. 
+
+		% ex: (Some boys (in (the garden))) (are (sad))
+
+		For instance, in the sentence "\emph{Some boys in the garden are sad}", units within it are: 
+
+		(Some boys (in (the garden))) (are (sad))
+
+		Define (Some boys (in (the garden))) as $S_1$, (in (the garden)) as $S_2 $, and (the garden) as $S_3 $. 
+
+		If we assign $x$ to \emph{boys}, then the scope of $x$ is $S_1$. Then, we assign $z_2$ to \emph{(the garden)} instead of \emph{garden}. Therefore, the scope of $z_2$ is $S_2 $ instead of $S_3 $. 
 	}
 }
 
@@ -148,6 +160,8 @@
 	% Symbolic methods are possible to work well for semantic parsing as long as a correct CFG parsing tree is given
 
 	% We succeed to build a binding and scoping structure based on CFG parsing trees
+
+	% Our model can be used in semantic parsing of other languages and nested clauses
 }
 
 \bibliographystyle{unsrt}

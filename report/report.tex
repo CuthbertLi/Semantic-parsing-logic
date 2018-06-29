@@ -26,10 +26,10 @@
 	\newpage
 	\maketitle
 
-	\textbf{Abstract} - {In this paper, we present a generic model for semantic parsing. It takes context-free grammar (CFG) parsing trees as input, and outputs first-order logic (FOL) expressions. We get FLO expressions by traversing CFG parsing trees. }
+	\textbf{Abstract} - {In this paper, we present a symbolic model for semantic parsing. It takes context-free grammar (CFG) parsing trees as input, and outputs first-order logic (FOL) expressions. We also enforce rules of quantifiers and connectives in FOL, as well as binding and scoping based on properties of CFG parsing trees. Our model resolves binding and scoping within a sentence successfully and is highly generic and reliable. It can also be extended to more complex grammars or other languages easily. }
 
 	\vspace{5pt}
-	\textbf{\emph{Keywords:}} {}
+	\textbf{\emph{Keywords:}} {Semantic Parsing, Context-free Grammar, First-order Logic, Parsing Tree, Symbolic Methods}
 
 	\tableofcontents
 }
@@ -54,11 +54,11 @@
 	}
 
 	\subsection{Our Contributions}{
-		Thanks to parsing trees, our model is highly generic. We can easily reuse it for a different natural language by simply defining new rules. 
+		Thanks to parsing trees, our model is highly generic. We can easily reuse it for a different language by simply defining new rules. 
 
-		\cite{matsuzaki}
+		\cite{matsuzaki} has succeeded to build a semantic parsing framework for pre-university math problems. However, their model fails to determine binding and scoping, since they use dependency trees not CFG. 
 
-		We succeed to build a binding and scoping structures based on parsing trees. 
+		We succeed to build a binding and scoping structures based on CFG parsing trees. 
 	}
 }
 
@@ -126,7 +126,7 @@
 
 		We thus add some rules to avoid this. Whenever the output expression is started with $\exists $, we have to generate $\wedge $ instead of $\Rightarrow$. 
 
-		Predicate symbols and functions are ubiquitous in first-order logic. To tackle disambiguation as well as binding and scoping more easily, however, we use them even more. We define a new variable name when we meet a constant, by defining a constant function for it. 
+		Predicate symbols and functions are ubiquitous in first-order logic. To tackle disambiguation as well as binding and scoping more easily, however, we use them even more. We define a new variable name when we meet a constant, and define a constant function for it. 
 	}
 
 	\subsection{Binding and Scoping}{
@@ -151,6 +151,8 @@
 		If we assign $x$ to \emph{boys}, then the scope of $x$ is $S_1$. Then, we assign $z_2$ to \emph{(the garden)} instead of \emph{garden}. Therefore, the scope of $z_2$ is $S_2 $ instead of $S_3 $. 
 	}
 }
+
+% \section{Profile of Benchmark Data}{}
 
 \section{Results}{}
 

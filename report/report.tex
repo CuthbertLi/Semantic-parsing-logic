@@ -6,7 +6,7 @@
 \usepackage{indentfirst}
 \usepackage{pdfpages}
 \usepackage{dirtree}
-\usepackage{lastpage, hyperref}
+\usepackage{lastpage, hyperref, enumerate}
 % \usepackage{hyperref, url}
 
 % \pagestyle{fancy}
@@ -26,7 +26,7 @@
 	\newpage
 	\maketitle
 
-	\textbf{Abstract} - {In this paper, we present a symbolic model for semantic parsing. It takes context-free grammar (CFG) parsing trees as input, and outputs first-order logic (FOL) expressions. We also enforce rules of quantifiers and connectives in FOL, as well as binding and scoping based on properties of CFG parsing trees. Our model resolves binding and scoping within a sentence successfully and is highly generic and reliable. It can also be extended to more complex grammars or other languages easily. }
+	\textbf{Abstract} - {In this paper, we present a symbolic model for semantic parsing. Our model takes context-free grammar (CFG) parsing trees as input, and outputs first-order logic (FOL) expressions. We also enforce rules of quantifiers and connectives in FOL, as well as binding and scoping based on properties of CFG parsing trees. Our model resolves binding and scoping within a sentence successfully and is highly generic and reliable. Hopefully, our model can easily be extended to more complex grammars or other languages. }
 
 	\vspace{5pt}
 	\textbf{\emph{Keywords:}} {Semantic Parsing, Context-free Grammar, First-order Logic, Parsing Tree, Symbolic Methods}
@@ -54,7 +54,7 @@
 	}
 
 	\subsection{Our Contributions}{
-		Thanks to parsing trees, our model is highly generic. We can easily reuse it for a different language by simply defining new rules. 
+		Thanks to parsing trees, our model is highly generic. We can easily reuse it for a different language by simply defining new rules. For instance, we can build a semantic parser for French by adding lexicons and grammars.  
 
 		\cite{matsuzaki} has succeeded to build a semantic parsing framework for pre-university math problems. However, their model fails to determine binding and scoping, since they use dependency trees not CFG. 
 
@@ -63,9 +63,7 @@
 }
 
 \section{Methods}{
-	\subsection{Grammars and Parsing Tree}{ 
-		\cite{su}
-
+	\subsection{Grammars and Parsing Tree}{
 		According to Chomsky hierarchy, formal grammars can be classified as regular grammar, context-free grammar (CFG), context-sensitive grammar and recursive enumerable grammar. 
 
 		Context-sensitive grammar is computationally intractable and recursive enumerable grammar is even undecideable, although they more expressive and more powerful. Besides, regular grammar is obviously too restrictive. Therefore, we can choose either context-free grammar or one of its subsets, dependency grammar. 
@@ -76,25 +74,51 @@
 	}
 
 	\subsection{Recursive Definition of FOL}{
-		% Terms
+		FOL expressions can be recursively defined in the following way. 
 
-		% The set of terms is inductively defined by the following rules:
+		Terms can be defined like this. 
 
-		% Variables. Any variable is a term.
-		% Functions. Any expression f(t1,...,tn) of n arguments (where each argument ti is a term and f is a function symbol of valence n) is a term. In particular, symbols denoting individual constants are nullary function symbols, and are thus terms.
+		\begin{enumerate}
+		\item {
+			Variables. 
+		}
 
-		% Only expressions which can be obtained by finitely many applications of rules 1 and 2 are terms. For example, no expression involving a predicate symbol is a term.
-		% Formulas
+		\item {
+			Functions: if $t_1, \cdots, t_n $ are terms, then $f(t_1, \cdots, t_n)$ is a term. 
+		}
 
-		% The set of formulas (also called well-formed formulas[9] or WFFs) is inductively defined by the following rules:
+		\item {
+			Constants. 
+		}
+		\end{enumerate}
 
-		% Predicate symbols. If P is an n-ary predicate symbol and t1, ..., tn are terms then P(t1,...,tn) is a formula.
-		% Equality. If the equality symbol is considered part of logic, and t1 and t2 are terms, then t1 = t2 is a formula.
-		% Negation. If φ is a formula, then ¬ {\displaystyle \lnot } \lnot φ is a formula.
-		% Binary connectives. If φ and ψ are formulas, then (φ → {\displaystyle \rightarrow } \rightarrow ψ) is a formula. Similar rules apply to other binary logical connectives.
-		% Quantifiers. If φ {\displaystyle \varphi } \varphi is a formula and x is a variable, then ∀ x φ {\displaystyle \forall x\varphi } \forall x\varphi (for all x, φ {\displaystyle \varphi } \varphi holds) and ∃ x φ {\displaystyle \exists x\varphi } \exists x\varphi (there exists x such that φ {\displaystyle \varphi } \varphi ) are formulas.
+		The set of formulas is inductively defined by the following rules:
 
-		% Only expressions which can be obtained by finitely many applications of rules 1–5 are formulas. The formulas obtained from the first two rules are said to be atomic formulas.
+		\begin{enumerate}
+		\item {
+			Predicate symbols: If $t_1, \cdots, t_n$ are terms then $P(t_1, \cdots, t_n)$ is a formula. 
+		}
+
+		\item {
+			Equality: If $t_1$ and $t_2$ are terms, then $t_1 = t_2$ is a formula. 
+		}
+
+		\item {
+			Negation: If $\phi $ is a formula, then $\neg \phi $ is a formula. 
+		}
+
+		\item {
+			Binary connectives. If $\phi $ and $\varphi $ are formulas, then $\phi B \varphi $ is a formula. 
+
+			$B$ indicates any binary connective. 
+		}
+
+		\item {
+			Quantifiers: If $\varphi$ is a formula and $x$ is a variable, then $\forall x \varphi$ and $\exists x \varphi $ are formulas.  
+		}
+		\end{enumerate}
+
+		All FOL expressions are constructed in this way. Therefore, we can also use them to construct FOL expressions from CFG parsing trees. 
 	}
 }
 
@@ -154,16 +178,16 @@
 
 % \section{Profile of Benchmark Data}{}
 
-\section{Results}{}
+\section{Results}{
+	We test our model using manually written sentences. Syntax analysis is done by package of NLTK, and the output is CFG parsing trees. 
+
+	Our model can then generate corresponding FOL logic expression correctly for each sentence. That means, our model is reliable for certain types of sentences. 
+}
 
 \section{Conclusion}{
-	% We succeed to build a generic and reliable model of semantic parsing based on CFG parsing trees
+	We succeed to build a generic and reliable model of semantic parsing based on CFG parsing trees. Therefore, symbolic methods are possible to work well for semantic parsing as long as a correct CFG parsing tree is given. A binding and scoping structure based on CFG parsing trees is also introduced in our model. 
 
-	% Symbolic methods are possible to work well for semantic parsing as long as a correct CFG parsing tree is given
-
-	% We succeed to build a binding and scoping structure based on CFG parsing trees
-
-	% Our model can be used in semantic parsing of other languages and nested clauses
+	Our future work includes the expansion of the lexicon with the aid of the semantic parser and generalizing our model to other natural languages. 
 }
 
 \bibliographystyle{unsrt}

@@ -26,7 +26,7 @@
 	\newpage
 	\maketitle
 
-	\textbf{Abstract} - {In this paper, we present a generic model for semantic parsing. }
+	\textbf{Abstract} - {In this paper, we present a generic model for semantic parsing. It takes context-free grammar (CFG) parsing trees as input, and outputs first-order logic (FOL) expressions. We get FLO expressions by traversing CFG parsing trees. }
 
 	\vspace{5pt}
 	\textbf{\emph{Keywords:}} {}
@@ -38,6 +38,14 @@
 	\subsection{Background and Motivating Applications}{
 		The Goal of semantic parsing is to formalize natural languages. That is, translating texts in natural languages into formal languges, like first-order logic (FOL) or higher-order logic. 
 
+		% Motivating applications: 
+
+		% Formal verification of programming languages
+
+		% Formal verification of computer security
+
+		% Automated theorem proving in mathematics
+
 		Semantic parsing can be applied in a wide range of fields both in computer science and outside computer science. Computer security of a software, for instance, cannot be confirmed until it is studied formally and mathematically. Empirical methods like fuzzing are not so reliable because they lack solid foundations. Thus, semantic parsing is necessary. 
 
 		Formal verification of programming languages also require to formalize user manuals or official guides, which are typically written in natural languages. Most of these tasks are done by hand now. This is tedious and erroneous. 
@@ -48,12 +56,14 @@
 	\subsection{Our Contributions}{
 		Thanks to parsing trees, our model is highly generic. We can easily reuse it for a different natural language by simply defining new rules. 
 
+		\cite{matsuzaki}
+
 		We succeed to build a binding and scoping structures based on parsing trees. 
 	}
 }
 
 \section{Methods}{
-	\subsection{Grammars and Parsing Tree}{
+	\subsection{Grammars and Parsing Tree}{ 
 		\cite{su}
 
 		According to Chomsky hierarchy, formal grammars can be classified as regular grammar, context-free grammar (CFG), context-sensitive grammar and recursive enumerable grammar. 
@@ -89,14 +99,56 @@
 }
 
 \section{Parsing Tree Traversal}{
-	\subsection{Binding and Scoping}{}
-}
+	% Supervised learning and neural networks are costly and unreliable for semantic parsing
 
-\section{Generation of FOL}{}
+	% Although supervised learning and neural networks are amazingly successful in natural language processing, advances in semantic parsing are relatively little. 
+
+	% Since CFG parsing trees are deterministic and informative enough, rules that are needed to add are very limited. 
+
+	Although supervised learning and neural networks are amazingly successful in natural language processing, advances in semantic parsing are relatively little. Most existing methods of semantic parsing are highly restrictive in fields or grammars. 
+
+	% Therefore, we develop a symbolic approach for semantic parsing, which is computationally less complex and more reliable and predictable than learning algorithms. 
+
+	Therefore, we develop a symbolic approach for semantic parsing, which is computationally less complex and more reliable and predictable than learning algorithms. We generate first-order logic expressions by traversing CFG parsing trees and defining a small number of rules manually. Since CFG parsing trees are deterministic and informative enough, rules we need to add are very limited. 
+
+	\subsection{Generation of FOL}{
+		% Generation of negation and equality is quite simple. 
+
+		% However, generation of binary connectives and quantifiers is not trivial. 
+
+		% We have to avoid common mistakes like using $\wedge $ as the main connective with $\forall $, or using $\wedge $ as the main connective with $\Rightarrow $ as the main connective with $\exists $. 
+
+		% Predicate symbols and functions are ubiquitous in first-order logic. To tackle disambiguation as well as binding and scoping more easily, however, we use them even more. 
+
+		Now we can generate first-order logic expressions by inductive formation rules. 
+
+		Generation of negation and equality is quite simple. However, generation of binary connectives and quantifiers is not trivial. We have to avoid common mistakes like using $\wedge $ as the main connective with $\forall $, or using $\wedge $ as the main connective with $\Rightarrow $ as the main connective with $\exists $. 
+
+		We thus add some rules to avoid this. Whenever the output expression is started with $\exists $, we have to generate $\wedge $ instead of $\Rightarrow$. 
+
+		Predicate symbols and functions are ubiquitous in first-order logic. To tackle disambiguation as well as binding and scoping more easily, however, we use them even more. We define a new variable name when we meet a constant, by defining a constant function for it. 
+	}
+
+	\subsection{Binding and Scoping}{
+		% Binding is not challenging for a single sentence. However, determining scope of variables is not even possible without the help of parsing trees. 
+
+		Binding is not challenging for a single sentence. However, determining scope of variables is not even possible without the help of parsing trees. 
+
+		% Rule: A variable lives within the tree rooted by the closest non-trivial NP parent
+
+		Our rule is that a variable lives within the tree rooted by the closest non-trivial NP parent. 
+	}
+}
 
 \section{Results}{}
 
-\section{Conclusion}{}
+\section{Conclusion}{
+	% We succeed to build a generic and reliable model of semantic parsing based on CFG parsing trees
+
+	% Symbolic methods are possible to work well for semantic parsing as long as a correct CFG parsing tree is given
+
+	% We succeed to build a binding and scoping structure based on CFG parsing trees
+}
 
 \bibliographystyle{unsrt}
 \bibliography{report}

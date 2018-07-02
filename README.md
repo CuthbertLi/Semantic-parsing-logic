@@ -9,3 +9,4 @@ Major methodology is manually defined semantic laws, possibly with some help of 
 ## Structure of the project directory: 
 	- FLO-parsing is to implement semantic parsing using Rust (just a try, no guarantee to finish) 
 	- FLO-generate is to implement translation from natural language to first-order logic using python. We can run "./demo.sh" to see the result in PDF
+	- FCFG is to implement translation from natural language to first-order logic using python. We can run "./demo.sh" to see the result in PDF
